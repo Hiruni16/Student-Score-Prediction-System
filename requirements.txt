@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+passlib[bcrypt]
+tensorflow
+joblib
+pandas
+mysql-connector-python
+itsdangerous
+scikit-learn</content>
+<parameter name="filePath">c:\xampp\htdocs\student_score_app\requirements.txt

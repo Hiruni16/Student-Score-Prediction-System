@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScorePredictor | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2447 0%, #0d1128 100%);
+            color: #ffffff;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 80px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(122, 162, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #e0e7ff;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(8px);
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #818cf8, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons a {
+            margin-left: 20px;
+            padding: 10px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signup {
+            background: linear-gradient(135deg, #7a7cff, #5f6bff);
+            color: white;
+            box-shadow: 0 4px 15px rgba(122, 124, 255, 0.3);
+        }
+
+        .signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 124, 255, 0.4);
+        }
+
+        .login {
+            border: 2px solid #7a7cff;
+            color: #7a7cff;
+        }
+
+        .login:hover {
+            background: rgba(122, 124, 255, 0.1);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 80px 60px;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 580px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #8fa8ff, #7a7cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #c5d0ff;
+            font-size: 18px;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #7a7cff, #5f6bff);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(122, 124, 255, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(122, 124, 255, 0.45);
+        }
+
+        .subtext {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #9aa8d6;
+            line-height: 1.5;
+        }
+
+        /* ---------- IMAGE ---------- */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 620px;
+            width: 100%;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ---------- FEATURES SECTION ---------- */
+        .features {
+            padding: 100px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #8fa8ff, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: #c5d0ff;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(122, 162, 255, 0.1);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(122, 162, 255, 0.3);
+            box-shadow: 0 12px 32px rgba(122, 124, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #e0e7ff;
+        }
+
+        .feature-card p {
+            color: #c5d0ff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* ---------- HOW IT WORKS ---------- */
+        .how-it-works {
+            padding: 100px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            margin-top: 60px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-number {
+            min-width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #e0e7ff;
+        }
+
+        .step-content p {
+            color: #c5d0ff;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ---------- TESTIMONIALS ---------- */
+        .testimonials {
+            padding: 100px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(122, 162, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .testimonial-text {
+            color: #c5d0ff;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            color: #e0e7ff;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #9aa8d6;
+        }
+
+        /* ---------- CTA SECTION ---------- */
+        .cta-section {
+            padding: 100px 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(122, 162, 255, 0.2);
+            border-radius: 24px;
+            padding: 60px 40px;
+        }
+
+        .cta-box h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            color: #e0e7ff;
+        }
+
+        .cta-box p {
+            color: #c5d0ff;
+            font-size: 18px;
+            margin-bottom: 36px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(122, 162, 255, 0.1);
+            padding: 60px 80px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #e0e7ff;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9aa8d6;
+            font-size: 15px;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #7a7cff;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(122, 162, 255, 0.1);
+            text-align: center;
+            color: #9aa8d6;
+            font-size: 14px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1200px) {
+            .hero {
+                padding: 60px 60px 40px;
+            }
+            
+            .hero-image img {
+                max-width: 500px;
+            }
+
+            .features,
+            .how-it-works,
+            .testimonials,
+            .cta-section {
+                padding: 80px 60px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 20px 40px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 40px 60px;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .hero-image img {
+                max-width: 500px;
+                margin-top: 40px;
+            }
+
+            .step {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .features,
+            .how-it-works,
+            .testimonials,
+            .cta-section,
+            .footer {
+                padding: 60px 40px 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 16px 24px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .nav-buttons a {
+                padding: 8px 18px;
+                font-size: 14px;
+                margin-left: 12px;
+            }
+
+            .hero {
+                padding: 30px 24px 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .features,
+            .how-it-works,
+            .testimonials,
+            .cta-section {
+                padding: 50px 24px;
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 40px 24px 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">
+            <div class="logo-icon">S</div>
+            <span class="logo-text">ScorePredictor</span>
+        </div>
+        <div class="nav-buttons">
+            <a href="/register" class="signup">Sign Up</a>
+            <a href="/login" class="login">Login</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>
+                Predict Your<br>
+                Academic Success with <span>AI</span>
+            </h1>
+            <p>
+                AI-powered score predictions for smarter learning.
+                Understand your performance patterns and gain personalized 
+                insights to achieve better academic results.
+            </p>
+            <a href="/login" class="cta">Start Predicting</a>
+            <div class="subtext">
+                Join thousands of students who use ScorePredictor to 
+                improve their academic performance.
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="../static/Predict_score_Image.png" alt="Student Score Prediction Illustration">
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Powerful Features</h2>
+            <p>Everything you need to predict and improve your academic performance</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Accurate Predictions</h3>
+                <p>Our advanced AI algorithms analyze your study patterns and performance history to provide highly accurate score predictions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Performance Analytics</h3>
+                <p>Get detailed insights into your strengths and weaknesses with comprehensive performance analytics and visualizations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Personalized Insights</h3>
+                <p>Receive tailored recommendations and study strategies based on your unique learning patterns and goals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your improvement over time with intuitive dashboards that show your academic journey at a glance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Smart Reminders</h3>
+                <p>Never miss important study sessions with intelligent reminders that adapt to your schedule and priorities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>Your academic data is encrypted and protected with industry-leading security standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Get started in three simple steps</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Create Your Profile</h3>
+                    <p>Sign up and tell us about your academic background, subjects, and goals. The more we know, the better predictions we can provide.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Input Your Data</h3>
+                    <p>Enter your past scores, study hours, and other relevant information. Our AI will start analyzing your patterns immediately.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Get Predictions & Improve</h3>
+                    <p>Receive accurate score predictions and personalized recommendations to help you achieve your academic goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>What Students Say</h2>
+            <p>Hear from students who have improved their grades with ScorePredictor</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "ScorePredictor helped me identify my weak areas and focus my study time more effectively. My GPA improved by 0.5 points in just one semester!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SA</div>
+                    <div class="author-info">
+                        <h4>Sarah Anderson</h4>
+                        <p>Computer Science Major</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "The predictions are incredibly accurate! I love how it shows me exactly what I need to work on to reach my target scores."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MJ</div>
+                    <div class="author-info">
+                        <h4>Michael Johnson</h4>
+                        <p>Engineering Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "As someone who struggled with time management, ScorePredictor's insights have been game-changing. I finally feel in control of my academics."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">EP</div>
+                    <div class="author-info">
+                        <h4>Emily Parker</h4>
+                        <p>Business Administration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Boost Your Grades?</h2>
+            <p>Join thousands of students already using AI to improve their academic performance.</p>
+            <a href="/register" class="cta">Get Started for Free</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ScorePredictor</h3>
+                <p>Empowering students with AI-driven insights to achieve academic excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Product</h3>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">How It Works</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ScorePredictor. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

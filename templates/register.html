@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | ScorePredictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: radial-gradient(circle at top left, #1f2b5c, #0b0f2b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(143, 168, 255, 0.3);
+            border-radius: 8px;
+            color: #8fa8ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #8fa8ff;
+            transform: translateX(-3px);
+        }
+
+        .back-button::before {
+            content: "←";
+            font-size: 18px;
+        }
+
+        .card {
+            background: #0f153d;
+            padding: 35px;
+            width: 380px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-top: 12px;
+            display: block;
+            color: #cfd6ff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #7a7cff, #5f6bff);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .link {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .link a {
+            color: #8fa8ff;
+            text-decoration: none;
+        }
+
+        .success-message {
+            background: rgba(40, 180, 99, 0.15);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+         from {
+            opacity: 0;
+            transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+        @media (max-width: 600px) {
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .card {
+                width: 90%;
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="/" class="back-button">Back to Home</a>
+
+<div class="card">
+    <h2>Create Account</h2>
+
+    {% if success %}
+      <div class="success-message">
+    {{ success }}
+      </div>
+    {% endif %}
+
+    <form action="/register" method="post">
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <div class="link">
+        Already have an account?
+        <a href="/login">Login</a>
+    </div>
+</div>
+</body>
+</html>

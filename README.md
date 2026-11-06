@@ -118,7 +118,6 @@ The application follows a three-tier architecture:
 
 7. Open the local URL displayed in the terminal to access the application.
 
-> **Note:** Update the installation instructions and database configuration to match the files in your repository.
 
 ## 📁 Project Structure
 
@@ -136,8 +135,6 @@ Student-Score-Predictor/
 ├── requirements.txt        # Python dependencies
 └── README.md
 ```
-
-*Adjust the folder structure above to match your actual GitHub repository.*
 
 ## 🎯 Project Objectives
 
